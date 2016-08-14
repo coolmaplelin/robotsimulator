@@ -139,6 +139,7 @@ class APIController extends Controller
 				$em->flush();  
 				
 				$rtn = array(
+					'id' => $Robot->getId(),
 					'x' => $x,
 					'y' => $y,
 					'heading' => $heading,

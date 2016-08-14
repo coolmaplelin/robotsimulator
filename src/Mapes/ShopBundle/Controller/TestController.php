@@ -28,14 +28,14 @@ class TestController extends Controller
 		$args = array();*/
 		
 		/* Test CREATE robot */
-		/*$url = 'http://heyyou/shop/3/robot';
+		$url = 'http://heyyou/shop/3/robot';
 		$http_method = 'POST';
 		$args = array(
 			'x' => 3,
 			'y' => 3,
 			'heading' => 'E', 
 			'commands' => 'MLMLMRMRMRRM',
-		);*/
+		);
 		
 		/* Test UPDATE robot */
 		/*$url = 'http://heyyou/shop/1/robot/4';
@@ -53,9 +53,9 @@ class TestController extends Controller
 		$args = array();*/
 		
 		/* Test Simulator */
-		$url = 'http://heyyou/shop/1/execute';
+		/*$url = 'http://heyyou/shop/1/execute';
 		$http_method = 'POST';
-		$args = array();
+		$args = array();*/
 		
 		$timeout = 30;
 		$verify_ssl = false;
