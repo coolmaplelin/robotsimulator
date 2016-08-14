@@ -1,7 +1,8 @@
 robotsimulator 
 ========================
 
-A robot simulator that tests the various scenarios and commands
+A simulator for robotic controller built. View a demo running at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
+
 
 Requirements
 ------------
@@ -63,7 +64,7 @@ $ php bin/console server:run
 
 Demo
 -----
-View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/" target="_blank">AWS</a>.
+View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
 
 API Usage
 <table>
