@@ -68,11 +68,11 @@ View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.am
 API Usage
 <table>
  <tr><th>HTTP method</th><th>Endpoint</th><th>Function</th><th>Request</th><th>Response</th></tr>
- <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td><td>{<br/>width: int<br/>height:int<br/>}</td><td></td></tr>
- <tr><td>GET</td><td>/shop/:id</td><td>Retrieves a shop by its id. The list of Robots is in the same order that they were added</td></tr>
- <tr><td>DELETE</td><td>/shop/:id</td><td>Deletes the shop, ALL Robots attached are also deleted</td></tr>
-<tr><td>POST</td><td>/shop/:id/robot</td><td>Creates a new robot in the shop</td></tr>
-<tr><td>PUT</td><td>/shop/:id/robot/:rid</td><td>Updates the properties of the Robot</td></tr>
-<tr><td>DELETE</td><td>/shop/:id/robot/:rid</td><td>Deletes the robot from the lawn</td></tr>
-<tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots</td></tr>
+ <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td><td>{<br/>width: int<br/>height:int<br/>}</td><td>{<br/>id: int<br/>width: int<br/>height: int<br/>}</td></tr>
+ <tr><td>GET</td><td>/shop/:id</td><td>Retrieves a shop by its id. The list of Robots is in the same order that they were added</td><td></td><td>{<br/>id: int<br/>width: int<br/>height: int<br/>robots: [<br/>{ < robot > },<br/>]<br/>}</td></tr>
+ <tr><td>DELETE</td><td>/shop/:id</td><td>Deletes the shop, ALL Robots attached are also deleted</td><td></td><td>{<br/>status: “ok”<br/>}</td></tr>
+<tr><td>POST</td><td>/shop/:id/robot</td><td>Creates a new robot in the shop</td><td>{<br/>x: int<br/>y: int<br/>heading: char<br/>commands: string<br/>}</td><td>{<br/>id: int<br/>x: int<br/>y: int<br/>heading: char<br/>commands: string<br/>}</td></tr>
+<tr><td>PUT</td><td>/shop/:id/robot/:rid</td><td>Updates the properties of the Robot</td><td>{<br/>x: int<br/>y: int<br/>heading: char<br/>commands: string<br/>}</td><td>{<br/>x: int<br/>y: int<br/>heading: char<br/>commands: string<br/>}</td></tr>
+<tr><td>DELETE</td><td>/shop/:id/robot/:rid</td><td>Deletes the robot from the lawn</td><td></td><td>{<br/>status: “ok”<br/>}</td></tr>
+<tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots</td><td></td><td>{<br/>id: int<br/>width: int<br/>height: int<br/>robots: [<br/>{ < robot > },<br/>]<br/>}</td></tr>
 </table>
