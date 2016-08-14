@@ -64,27 +64,15 @@ $ php bin/console server:run
 Demo
 -----
 View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>.
-```json 
-{
-width: int
-height: int
-}
-```
+
 API Usage
 <table>
- <tr><th>HTTP method</th><th>Endpoint</th><th>Description</th><th>Request</th><th>Response</th></tr>
- <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td><td>
-```json 
-{
-width: int
-height: int
-}
-```
-</td><td>
-{
-id: int
-width: int
-height: int
-}
-</td></tr>
+ <tr><th>HTTP method</th><th>Endpoint</th><th>Function</th></tr>
+ <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td></tr>
+ <tr><td>GET</td><td>/shop/:id</td><td>Retrieves a shop by its id. The list of Robots is in the same order that they were added</td></tr>
+ <tr><td>DELETE</td><td>/shop/:id</td><td>Deletes the shop, ALL Robots attached are also deleted</td></tr>
+<tr><td>POST</td><td>/shop/:id/robot</td><td>Creates a new robot in the shop</td></tr>
+<tr><td>PUT</td><td>/shop/:id/robot/:rid</td><td>Updates the properties of the Robot</td></tr>
+<tr><td>DELETE</td><td>/shop/:id/robot/:rid</td><td>Deletes the robot from the lawn</td></tr>
+<tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots</td></tr>
 </table>
