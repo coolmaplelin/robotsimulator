@@ -79,5 +79,13 @@ API Usage
 <tr><td>POST</td><td>/shop/:id/robot</td><td>Creates a new robot in the shop</td></tr>
 <tr><td>PUT</td><td>/shop/:id/robot/:rid</td><td>Updates the properties of the Robot</td></tr>
 <tr><td>DELETE</td><td>/shop/:id/robot/:rid</td><td>Deletes the robot from the lawn</td></tr>
-<tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots</td></tr>
+<tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots
+```javascript
+{ 
+"some": "json" 
+"some": "json" 
+}
+```
+
+</td></tr>
 </table>
