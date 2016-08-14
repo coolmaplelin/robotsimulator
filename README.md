@@ -1,7 +1,7 @@
-Symfony Demo Application
+robotsimulator 
 ========================
 
-A demo Symfony application
+A robot simulator that tests the various scenarios and commands
 
 Requirements
 ------------
@@ -12,9 +12,9 @@ Requirements
   
 Installation
 ------------
-Download this repository to your local directory (say 'demo') and run the following commands:
+Download this repository to your local directory (say 'robot') and run the following commands:
 ```bash
-$ cd demo 
+$ cd robot 
 $ php composer.phar update
 ```
 
