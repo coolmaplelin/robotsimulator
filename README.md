@@ -61,11 +61,6 @@ Use the built-in web server:
 ```bash
 $ php bin/console server:run
 ```
-
-Demo
------
-View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
-
 API Usage
 <table>
  <tr><th>HTTP method</th><th>Endpoint</th><th>Function</th><th>Request</th><th>Response</th></tr>
@@ -77,3 +72,9 @@ API Usage
 <tr><td>DELETE</td><td>/shop/:id/robot/:rid</td><td>Deletes the robot from the lawn</td><td></td><td>{<br/>status: “ok”<br/>}</td></tr>
 <tr><td>POST</td><td>/shop/:id/execute</td><td>Runs a simulation in the shop using the Robots</td><td></td><td>{<br/>id: int<br/>width: int<br/>height: int<br/>robots: [<br/>{ < robot > },<br/>]<br/>}</td></tr>
 </table>
+
+Demo
+-----
+View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
+
+
