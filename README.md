@@ -69,10 +69,12 @@ API Usage
 <table>
  <tr><th>HTTP method</th><th>Endpoint</th><th>Description</th><th>Request</th><th>Response</th></tr>
  <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td><td>
+```bash 
 {
 width: int
 height: int
 }
+```
 </td><td>
 {
 id: int
