@@ -1,0 +1,16 @@
+{% extends 'MapesShopBundle::layout.html.twig' %}
+
+
+{% block content %}
+
+	<h1>500 Error</h1>
+
+	<p>Sorry, we've encountered a system internal error.<p>
+
+	
+	{% if show_message %}
+		
+		<p>{{exception.message}} </p>
+	{% endif %}
+	
+{% endblock %}

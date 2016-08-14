@@ -1,0 +1,21 @@
+#/app/config/parameters.yml
+/build/
+/phpunit.xml
+/*.txt
+/*.bat
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+# Ignore everything in the "vendor" directory, except the "sfThumbnailPlugin" directory
+/vendor/*
+# Ignore everything in the "bundles" directory, except the "mapescms" directory
+/web/bundles/*
+!/web/bundles/mapescms

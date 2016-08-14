@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: demo
+    database_user: root
+    database_password: null
+    mailer_transport: sendmail
+    mailer_host: 127.0.0.1
+    mailer_user: ~
+    mailer_password: ~
+    secret: 3010d883ebf115d33fc6a957f25aa3ea5144316e
+    sf_web_dir: %kernel.root_dir%/../web

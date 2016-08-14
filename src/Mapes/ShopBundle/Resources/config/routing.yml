@@ -1,0 +1,47 @@
+robot_simulator:
+    path:  /
+    defaults: { _controller: MapesShopBundle:Simulator:index }
+api_create_shop:
+    path:  /shop
+    defaults: { _controller: MapesShopBundle:API:create_shop }	
+    methods:  [POST]
+api_get_shop:
+    path:  /shop/{id}
+    defaults: { _controller: MapesShopBundle:API:get_shop }	
+    requirements:
+      id : '\d+'
+    methods:  [GET]	  
+api_delete_shop:
+    path:  /shop/{id}
+    defaults: { _controller: MapesShopBundle:API:delete_shop }	
+    requirements:
+      id : '\d+'
+    methods:  [DELETE]	
+api_create_robot:
+    path:  /shop/{id}/robot
+    defaults: { _controller: MapesShopBundle:API:create_robot }	
+    requirements:
+      id : '\d+'
+    methods:  [POST]
+api_update_robot:
+    path:  /shop/{id}/robot/{rid}
+    defaults: { _controller: MapesShopBundle:API:update_robot }	
+    requirements:
+      id : '\d+'
+      rid : '\d+'
+    methods:  [PUT]
+api_delete_robot:
+    path:  /shop/{id}/robot/{rid}
+    defaults: { _controller: MapesShopBundle:API:delete_robot }	
+    requirements:
+      id : '\d+'
+      rid : '\d+'
+    methods:  [DELETE]
+api_run_simulator:
+    path:  /shop/{id}/execute
+    defaults: { _controller: MapesShopBundle:API:run_simulator }	
+    methods:  [POST]
+test_api:
+   path:  /test
+   defaults: { _controller: MapesShopBundle:Test:index }	
+   

@@ -1,0 +1,33 @@
+Mapes\ShopBundle\Entity\Robot:
+  type: entity
+  repositoryClass: Mapes\ShopBundle\Repository\RobotRepository
+  table: robot
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    shop_id:
+      type: integer
+      nullable: false
+    pos_x:
+      type: integer
+      nullable: true
+    pos_y:
+      type: integer
+      nullable: true
+    heading:
+      type: string
+      length: 1
+      nullable: true
+    commands:
+      type: string
+      length: 255
+      nullable: true
+  manyToOne:
+    shop:
+      targetEntity: Shop
+      inversedBy: robots
+      joinColumn:
+        name: shop_id
+        referencedColumnName: id

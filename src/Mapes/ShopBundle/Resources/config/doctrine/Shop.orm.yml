@@ -1,0 +1,19 @@
+Mapes\ShopBundle\Entity\Shop:
+  type: entity
+  repositoryClass: Mapes\ShopBundle\Repository\ShopRepository
+  table: shop
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    width:
+      type: integer
+      nullable: true
+    height:
+      type: integer
+      nullable: true
+  oneToMany:
+    robots:
+      targetEntity: Robot
+      mappedBy: shop

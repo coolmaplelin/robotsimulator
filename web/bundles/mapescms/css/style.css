@@ -1,0 +1,85 @@
+section {
+    padding: 50px 0;
+}
+
+.table .text-right {text-align: right}
+.table .text-left {text-align: left}
+.table .text-center {text-align: center}
+.table .heading {padding: 10px; font-size: 2em; color: red}
+.table .hw {width:50px;}
+.table .he {width:50px;}
+
+.inputtable tr th:nth-child(1), .outputtable tr th:nth-child(1){
+    width:35%;
+}
+.inputtable tr th:nth-child(2), .outputtable tr th:nth-child(2){
+    width:25%;
+}
+.outputtext .dotWrap{float:left;position:relative}
+
+#matrix tr:nth-child(2) td, #matrix tr td:nth-child(1){font-weight:bold;}
+#matrix tr td {text-align: center}
+#matrix td:not([class]) {
+    background-color: #F9F9F9;
+	border: 1px dotted;
+}
+
+.cell {position: relative; text-align:center;height:50px}
+/*.dotWrap {position: absolute;}*/
+.dotWrap div{
+	border-radius: 50%;
+    display: block;
+    float: right;
+    height: 12px;
+    margin: 3px 0;
+    width: 12px;
+}
+
+.dot1{background-color: #6fd7de;}
+.dot2{background-color: #ff803e;}
+.dot3{background-color: #ffd20f;}
+.dot4{background-color: #ff9ac7;}
+.dot5{background-color: #d2a5ff;}
+.dot6{background-color: #00ff40;}
+.dot7{background-color: #e0112a;}
+.dot8{background-color: #9AD2FF;}
+.color1 {color: #6fd7de}
+.color2 {color: #ff803e}
+.color3 {color: #ffd20f}
+.color4 {color: #ff9ac7}
+.color5 {color: #d2a5ff}
+.color6 {color: #00ff40}
+.color7 {color: #e0112a}
+.color8 {color: #9AD2FF}
+
+
+
+.arrow-he{
+	width: 0;
+	height: 0;
+    border-top: 7.5px solid transparent;
+    border-bottom: 7.5px solid transparent;
+    border-left: 20px solid;	
+}
+.arrow-hs{
+	width: 0;
+	height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-top: 20px solid;
+}
+.arrow-hw{
+	width: 0;
+	height: 0;
+    border-top: 7.5px solid transparent;
+    border-bottom: 7.5px solid transparent;
+    border-right: 20px solid;	
+}
+.arrow-hn{
+	width: 0;
+	height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom: 20px solid;
+}
+
