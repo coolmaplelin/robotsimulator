@@ -29,9 +29,9 @@ class SimulatorController extends Controller
 			for($i = 1; $i < count($input); $i = $i + 2) {
 				if($input[$i] != '') {
 					$pos = explode(' ', isset($input[$i]) ? trim($input[$i]) : '');
-					$x = (int)$pos[0];
-					$y = (int)$pos[1];
-					$heading = strtoupper($pos[2]);
+					$x = isset($pos[0]) ? (int)$pos[0] : '';
+					$y = isset($pos[1]) ?(int)$pos[1] : '';
+					$heading = isset($pos[2]) ? strtoupper($pos[2]) : '';
 
 					$commands = isset($input[$i+1]) ? trim($input[$i+1]) :'';	
 					$robotsinputs[$num] = array(
