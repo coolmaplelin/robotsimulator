@@ -299,7 +299,11 @@ function moveRobot()
 			$('td[data-x="' + newX + '"][data-y="' + newY + '"]').find(".cell").append('<div class="arrow-h' + newH + ' color' + key + '"></div>');
 			
 		}
+		current_step++;
+	}else{
+		clearInterval(movingInterval);
+		$('.btn-play').show();
+		$('.btn-stop').hide();
 	}
-	current_step++;
 }
 
