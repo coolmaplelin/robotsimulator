@@ -60,3 +60,7 @@ Use the built-in web server:
 ```bash
 $ php bin/console server:run
 ```
+
+Demo
+-----
+View demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>
