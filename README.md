@@ -7,8 +7,8 @@ Requirements
 ------------
 
   * PHP 5.5.9 or higher;
+  * MYSQL database;
   * Symfony 3.1 and usual Symfony application requirements;
-  * Database table schema provided upon request;
   
 Installation
 ------------
@@ -16,6 +16,41 @@ Download this repository to your local directory (say 'robot') and run the follo
 ```bash
 $ cd robot 
 $ php composer.phar update
+```
+Create your local MYSQL database and table:
+```bash
+CREATE DATABASE demo DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci;
+USE DATABASE demo;
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `shop`
+-- ----------------------------
+DROP TABLE IF EXISTS `shop`;
+CREATE TABLE `shop` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `robot`
+-- ----------------------------
+DROP TABLE IF EXISTS `robot`;
+CREATE TABLE `robot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_id` int(11) DEFAULT NULL,
+  `pos_x` int(11) DEFAULT NULL,
+  `pos_y` int(11) DEFAULT NULL,
+  `heading` char(1) DEFAULT NULL,
+  `commands` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `shop_id` (`shop_id`),
+  CONSTRAINT `robot_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 ```
 
 
