@@ -63,4 +63,8 @@ $ php bin/console server:run
 
 Demo
 -----
-View demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>
+View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>.
+API Usage
+<table>
+ <tr><th>Endpoint</th><th>Description</th><th>Request</th><th>Response</th></tr>
+</table>
