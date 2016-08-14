@@ -1,29 +1,44 @@
 
-var GLOBAL_steps = 0;
-var GLOBAL_robots = [];
+var GLOBAL_steps = 0;   //Maximum steps that robot could move
+var GLOBAL_robots = []; //The array of robot status
+var GLOBAL_trace = [];  //The array of robot moving tracking
+var current_step = 0;   
+var movingInterval;
+
 
 $(function(){
-	//$('.btn-play').hide();
-	$('.btn-inipos').hide();
-	$('.btn-finalpos').hide();
+	
+	ResetPanel();
 	
 	$('.form-group .btn-action').click(function(){
-		
 		ResetPanel();
-		
 		Calculate();
 	});
 	
 	
-	/*$('.btn-play').click(function(){
-		Simulate();
-	});*/
+	$('.btn-play').click(function(){
+		startMoving();
+		$('.btn-play').hide();
+		$('.btn-stop').show();
+	});
+	$('.btn-stop').click(function(){
+		stopMoving();
+		$('.btn-play').show();
+		$('.btn-stop').hide();
+	});
 	
 	$('.btn-inipos').click(function(){
+		stopMoving();
 		showInipos();
+		$('.btn-play').show();
+		$('.btn-stop').hide();
 	});
+	
 	$('.btn-finalpos').click(function(){
+		stopMoving();
 		showFinalpos();
+		$('.btn-play').show();
+		$('.btn-stop').hide();
 	});
 	
 }) 
@@ -81,7 +96,8 @@ function Calculate()
 				//Draw the table
 				drawTable($('#matrix'), shop.m, shop.n); 
 				
-				//$('.btn-play').show();
+				$('.btn-play').show();
+				$('.btn-stop').hide();
 				$('.btn-inipos').show();
 				$('.btn-finalpos').show();
 
@@ -129,15 +145,7 @@ function drawTable($table, m, n)
 		str += '<tr>';
 		str += '	<td>' + y + '</td>';
 		for(var x = 0; x < n; x++) {
-			//var pos = 'a(' + j + ',' + i + ')';
 			var pos = 'a(' + x + ',' + y + ')';
-			/*str += '<td data-y="' + y + '" data-x="' + x + '" > \
-						<span class="pos">' + pos + '</span> \
-						<div class="cell"> \
-							<div class="dotWrap"> \
-							</div> \
-						</div> \
-					</td>';*/
 			str += '<td data-y="' + y + '" data-x="' + x + '" > \
 						<span class="pos">' + pos + '</span> \
 						<div class="cell"> \
@@ -156,79 +164,78 @@ function drawTable($table, m, n)
 }
 
 /*
-*  Place robot in the initial position
+*  Place all robots in the initial position
 */
 function showInipos()
 {
-	//$('#matrix .cell .dotWrap').html('');
 	$('#matrix .cell').html('');
 	for(var key in GLOBAL_robots) {
 		var x = GLOBAL_robots[key].inipos.X;
 		var y = GLOBAL_robots[key].inipos.Y;
 		var h = GLOBAL_robots[key].inipos.H.toLowerCase();
-		//$('td[data-x="' + x + '"][data-y="' + y + '"]').find(".dotWrap").append('<div class="dot' + key + '"></div>');
 		$('td[data-x="' + x + '"][data-y="' + y + '"]').find(".cell").append('<div class="arrow-h' + h + ' color' + key + '"></div>');
 	}
 }
 
 /*
-*  Place robot in the final position
+*  Place all robots in the final position
 */
 function showFinalpos()
 {
-	//$('#matrix .cell .dotWrap').html('');
 	$('#matrix .cell').html('');
 	for(var key in GLOBAL_robots) {
 		var x = GLOBAL_robots[key].finalpos.X;
 		var y = GLOBAL_robots[key].finalpos.Y;
 		var h = GLOBAL_robots[key].finalpos.H.toLowerCase();
-		//$('td[data-x="' + x + '"][data-y="' + y + '"]').find(".dotWrap").append('<div class="dot' + key + '"></div>');
 		$('td[data-x="' + x + '"][data-y="' + y + '"]').find(".cell").append('<div class="arrow-h' + h + ' color' + key + '"></div>');
 	}
 }
 
 /*
-*
+* Reset all the buttons and variables
 */
 function ResetPanel()
 {
-	//$('.btn-play').hide();
+	$('.btn-play').hide();
+	$('.btn-stop').hide();
 	$('.btn-inipos').hide();
 	$('.btn-finalpos').hide();
 
 	$('.outputtext').html('');
 	$('.error-msg').html('');
+	$('#matrix').html('');
 	GLOBAL_steps = 0;
 	GLOBAL_robots = 0;
-	
+    GLOBAL_trace = [];
+    current_step = 0;	
+	movingInterval = '';
 }
+
 /*
-*  Simulate the moving of robots
+*  Start playing the moving of robots
 */
-function Simulate()
+function startMoving()
 {
-	$('#matrix .cell .dotWrap').html('');
-	//Place robot in the initial position
-	for(var key in GLOBAL_robots) {
-		var x = GLOBAL_robots[key].inipos.X;
-		var y = GLOBAL_robots[key].inipos.Y;
-		$('td[data-x="' + x + '"][data-y="' + y + '"]').find(".dotWrap").append('<div class="dot' + key + '"></div>');
-	}
+	showInipos();
 	
-	//return;
-	//sleep(1000);
+	GLOBAL_trace = [];
 	for(var step = 0; step < GLOBAL_steps; step++) {
+		
+		GLOBAL_trace[step] = [];
+		
 		for(var key in GLOBAL_robots) {
 			
 			if(step == 0) {
 				var oldpos = {
 					'x' : GLOBAL_robots[key].inipos.X,
 					'y' : GLOBAL_robots[key].inipos.Y,
+					'h' : GLOBAL_robots[key].inipos.H,
 				}
 			}else if ((step - 1) in GLOBAL_robots[key].trace) {
 				var oldpos = {
 					'x' : GLOBAL_robots[key].trace[step-1].X,
 					'y' : GLOBAL_robots[key].trace[step-1].Y,
+					'h' : GLOBAL_robots[key].trace[step-1].H,
 				}
 			}
 
@@ -237,50 +244,62 @@ function Simulate()
 				newpos = {
 					'x' : GLOBAL_robots[key].trace[step].X,
 					'y' : GLOBAL_robots[key].trace[step].Y,
+					'h' : GLOBAL_robots[key].trace[step].H,
 				}
-				moveRobot(step, key, oldpos, newpos);
+				GLOBAL_trace[step].push({
+					'key' : key,
+					'oldpos' : oldpos,
+					'newpos' : newpos
+				});
 			}
 		}
 	}
+	current_step = 0;
+	
+	movingInterval = setInterval(function(){ moveRobot(); }, 2000);
 	
 }
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  
-  
-  while (true) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-  
-}
-
-function moveRobot(step,key, oldpos, newpos)
+/*
+*  Stop playing the moving of robots
+*/
+function stopMoving()
 {
-	var oldX = oldpos.x;
-	var oldY = oldpos.y;
-	var newX = newpos.x;
-	var newY = newpos.y;
-	
-	var message = 'step ' + step + ' : move robot' + key + ' from (' + oldX + ',' + oldY + ') to (' + newX + ',' + newY + ')'; 
-	console.log(message);
-	
-	
-	//Remove dot from previous position
-	var $olddot = $('td[data-x="' + oldX + '"][data-y="' + oldY + '"]').find(".dot" + key);
-	$olddot.remove();
-	//Place dot in the new position
-	var $dotWrap = $('td[data-x="' + newX + '"][data-y="' + newY + '"]').find(".dotWrap");
-	//$('td[data-x="' + newX + '"][data-y="' + newY + '"]').find(".dotWrap").append('<div class="dot' + key + '"></div>');
-	
-
-	$('<div class="dot' + key + '"></div>').appendTo($dotWrap).fadeIn("slow");
-
-
-/*	$olddot.fadeOut(1000, function(){ 
-		$(this).remove();
-	});*/
-	
+    clearInterval(movingInterval);
+	showFinalpos();
 }
+
+
+/*
+*  Move robot
+*/
+function moveRobot()
+{
+	if(current_step <= GLOBAL_steps) {
+		
+		for(var i in GLOBAL_trace[current_step]) {
+			var key = GLOBAL_trace[current_step][i].key;
+			var oldpos = GLOBAL_trace[current_step][i].oldpos;
+			var newpos = GLOBAL_trace[current_step][i].newpos;
+			
+			var oldX = oldpos.x;
+			var oldY = oldpos.y;
+			var oldH = oldpos.h.toLowerCase();
+			var newX = newpos.x;
+			var newY = newpos.y;
+			var newH = newpos.h.toLowerCase();
+			
+			var message = 'step ' + current_step + ' : move robot' + key + ' from (' + oldX + ',' + oldY + ',' + oldH + ') to (' + newX + ',' + newY + ',' + newH + ')'; 
+			console.log(message);
+			
+			//Remove arrow from previous position
+			$('td[data-x="' + oldX + '"][data-y="' + oldY + '"]').find(".color" + key).remove();
+			
+			//Place arrow in the new position
+			$('td[data-x="' + newX + '"][data-y="' + newY + '"]').find(".cell").append('<div class="arrow-h' + newH + ' color' + key + '"></div>');
+			
+		}
+	}
+	current_step++;
+}
+

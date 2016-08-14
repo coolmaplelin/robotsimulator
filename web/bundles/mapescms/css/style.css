@@ -17,6 +17,7 @@ section {
 .inputtable tr th:nth-child(2), .outputtable tr th:nth-child(2){
     width:25%;
 }
+.inputtable textarea { text-transform: uppercase; }
 .outputtext .dotWrap{float:left;position:relative}
 
 #matrix tr:nth-child(2) td, #matrix tr td:nth-child(1){font-weight:bold;}
@@ -37,23 +38,48 @@ section {
     width: 12px;
 }
 
-.dot1{background-color: #6fd7de;}
-.dot2{background-color: #ff803e;}
-.dot3{background-color: #ffd20f;}
-.dot4{background-color: #ff9ac7;}
-.dot5{background-color: #d2a5ff;}
+.dot1{background-color: #F57E16;}
+.dot2{background-color: #1EF516;}
+.dot3{background-color: #168EF5;}
+.dot4{background-color: #ED16F5;}
+.dot5{background-color: #8616F5;}
 .dot6{background-color: #00ff40;}
 .dot7{background-color: #e0112a;}
 .dot8{background-color: #9AD2FF;}
-.color1 {color: #6fd7de}
-.color2 {color: #ff803e}
-.color3 {color: #ffd20f}
-.color4 {color: #ff9ac7}
-.color5 {color: #d2a5ff}
+.dot9{background-color: #6fd7de;}
+.dot10{background-color: #ff9ac7;}
+.dot11{background-color: #2E0304;}
+.dot12{background-color: #032E2D;}
+.dot13{background-color: #86199C;}
+.dot14{background-color: #E03F77;}
+.dot15{background-color: #C9BA4D;}
+.dot16{background-color: #C94D9A;}
+.dot17{background-color: #4D5CC9;}
+.dot18{background-color: #F2670A;}
+.dot19{background-color: #21F20A;}
+.dot20{background-color: #0AE3F2;}
+
+
+.color1 {color: #F57E16}
+.color2 {color: #1EF516}
+.color3 {color: #168EF5}
+.color4 {color: #ED16F5}
+.color5 {color: #8616F5}
 .color6 {color: #00ff40}
 .color7 {color: #e0112a}
 .color8 {color: #9AD2FF}
-
+.color9 {color: #6fd7de}
+.color10{color: #ff9ac7}
+.color11{color: #2E0304;}
+.color12{color: #032E2D;}
+.color13{color: #86199C;}
+.color14{color: #E03F77;}
+.color15{color: #C9BA4D;}
+.color16{color: #C94D9A;}
+.color17{color: #4D5CC9;}
+.color18{color: #F2670A;}
+.color19{color: #21F20A;}
+.color20{color: #0AE3F2;}
 
 
 .arrow-he{
@@ -62,6 +88,7 @@ section {
     border-top: 7.5px solid transparent;
     border-bottom: 7.5px solid transparent;
     border-left: 20px solid;	
+	display: inline-block;
 }
 .arrow-hs{
 	width: 0;
@@ -69,6 +96,7 @@ section {
     border-left: 7.5px solid transparent;
     border-right: 7.5px solid transparent;
     border-top: 20px solid;
+	display: inline-block;
 }
 .arrow-hw{
 	width: 0;
@@ -76,6 +104,7 @@ section {
     border-top: 7.5px solid transparent;
     border-bottom: 7.5px solid transparent;
     border-right: 20px solid;	
+	display: inline-block;
 }
 .arrow-hn{
 	width: 0;
@@ -83,5 +112,6 @@ section {
     border-left: 7.5px solid transparent;
     border-right: 7.5px solid transparent;
     border-bottom: 20px solid;
+	display: inline-block;
 }
 

@@ -42,7 +42,7 @@ class APIController extends Controller
 			);
 			$response = new Response(json_encode($rtn));
 		}else{
-			$response = new Response(json_encode(array('status' => $status, 'input' => $input)));
+			$response = new Response(json_encode(array('status' => $status)));
 		}
 		
 		$response->headers->set('Content-Type', 'application/json');
@@ -260,7 +260,7 @@ class APIController extends Controller
 				);
 			}
 			
-			$result = Simulator::run($Shop->getWidth(), $Shop->getHeight(), $robotsinput);
+			$result = Simulator::run($Shop->getWidth(), $Shop->getHeight(), $robotsinput, false);
 			$errors = array();
 			
 			if($result['shop']['status'] != 'ok') {

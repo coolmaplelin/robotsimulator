@@ -13,9 +13,10 @@ class Simulator
 	/* This validates the input parameters for shop
     * @param  integer  	$width   		
     * @param  integer  	$height   		
+    * @param  boolean  	$haslimit   		
     * @return array		Array of result    
 	*/
-	public static function validateShop($width, $height)
+	public static function validateShop($width, $height, $haslimit = false)
 	{
 		$status = 'ok';
 		
@@ -27,9 +28,9 @@ class Simulator
 		if ($m === 0 || $n === 0) {
 			$status = 'error';
 			$errors[] = 'Shop size is invalid';
-		} elseif ((is_numeric($m) && $m > 20) || (is_numeric($n) && $n > 20) ) {
+		} elseif ($haslimit && (is_numeric($m) && $m > 20) || (is_numeric($n) && $n > 20) ) {
 			$status = 'error';
-			$errors[] = 'Size is limited under 20 * 20';
+			$errors[] = 'For better visualization, shop size is limited under 20 * 20';
 		}
 		
 		$result = array(
@@ -107,11 +108,12 @@ class Simulator
     * @param  integer	$width 			The width of shop
     * @param  integer	$height			The height of shop
     * @param  array  	$robotsinput	Array of robot's input to be passed
+    * @param  boolean  	$haslimit		If limit the shop size
     * @return array          			Array of result
 	*/
-	public static function run($width, $height, $robotsinput)
+	public static function run($width, $height, $robotsinput, $haslimit = false)
 	{
-		$shop = self::validateShop($width, $height);
+		$shop = self::validateShop($width, $height, $haslimit);
 		
 		$m = $height;
 		$n = $width;
@@ -245,7 +247,7 @@ class Simulator
 			foreach($robots as $key => $robot) {
 				if($robot['status'] == 'ok' && isset($robot['trace'][$step])) {
 					$pos = $robot['trace'][$step]['X'] . ',' .$robot['trace'][$step]['Y'];
-					if (in_array($pos, $pos_array)) {
+					if (in_array($pos, $pos_array) && !in_array($step+1, $collision) ) {
 						$collision[] = $step + 1;
 					}else{
 						$pos_array[] = $pos;

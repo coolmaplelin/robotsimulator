@@ -45,7 +45,16 @@ class SimulatorController extends Controller
 				}
 			}
 			
-			$result = Simulator::run($n, $m, $robotsinputs);
+			if ($num > 20) {
+				$result = array(
+					'shop' => array(
+						'status' => 'error',
+						'errors' => array('For better visualization, the number of robot is limited under 20')
+					)
+				);
+			}else{
+				$result = Simulator::run($n, $m, $robotsinputs, true);
+			}
 			$response = new Response(json_encode($result));
 			$response->headers->set('Content-Type', 'application/json');
 			return $response;
