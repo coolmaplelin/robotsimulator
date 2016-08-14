@@ -66,8 +66,8 @@ Demo
 View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>.
 ```json 
 {
-"width": "int"
-"height": "int"
+width: int
+height: int
 }
 ```
 API Usage
