@@ -16,14 +16,14 @@ class SimulatorController extends Controller
 			
 			$input = explode("\n", $request->request->get('input'));
 			
-			//Validate shop size
+			//Get shop size
 			$size_param =  isset($input[0]) && $input[0] ? trim($input[0]) : '';
 			$size = explode(' ', $size_param);
 			$m = (int)( isset($size[0])&& $size[0] ? $size[0] : 0 );
 			$n = (int)( isset($size[1])&& $size[1] ? $size[1] : 0 );
 			
-			//var_export($size_param);
 			
+			//Get robot input
 			$robotsinputs = array();
 			$num = 1;
 			for($i = 1; $i < count($input); $i = $i + 2) {
@@ -55,6 +55,7 @@ class SimulatorController extends Controller
 			}else{
 				$result = Simulator::run($n, $m, $robotsinputs, true);
 			}
+			
 			$response = new Response(json_encode($result));
 			$response->headers->set('Content-Type', 'application/json');
 			return $response;
