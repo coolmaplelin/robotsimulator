@@ -2,6 +2,8 @@ section {
     padding: 50px 0;
 }
 
+
+.author{border-top: 1px solid #F9F9F9;padding-top:10px;}
 .table .text-right {text-align: right}
 .table .text-left {text-align: left}
 .table .text-center {text-align: center}
