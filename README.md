@@ -64,7 +64,9 @@ $ php bin/console server:run
 Demo
 -----
 View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/">AWS</a>.
+
 API Usage
 <table>
- <tr><th>Endpoint</th><th>Description</th><th>Request</th><th>Response</th></tr>
+ <tr><th>HTTP method></th><th>Endpoint</th><th>Description</th><th>Request</th><th>Response</th></tr>
+ <tr><td>POST</td><td>/shop</td><td>Creates a new shop, with the required dimensions</td><td></td><td></td></tr>
 </table>
