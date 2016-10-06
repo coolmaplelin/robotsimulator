@@ -2,9 +2,9 @@ imports:
     - { resource: config.yml }
 
 parameters:
-    database_name: vpn_prod
-    database_user: vpn_user
-    database_password: getmerich88!
+    database_name: robot
+    database_user: myweb_user
+    database_password: coolml2!
     #PHP mail
     mailer_transport: sendmail
     mailer_host: 127.0.0.1

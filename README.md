@@ -1,7 +1,7 @@
 robotsimulator 
 ========================
 
-A simulator for robotic controller built. View a demo running at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
+A simulator for robotic controller built. View a demo running at <a href="http://robot.maplelin.net"  target="_blank">here</a>.
 
 
 Requirements
@@ -75,6 +75,6 @@ API Usage
 
 Demo
 -----
-View a running demo at <a href="http://ec2-52-62-172-4.ap-southeast-2.compute.amazonaws.com/"  target="_blank">AWS</a>.
+View a running demo at <a href="http://robot.maplelin.net"  target="_blank">here</a>.
 
 
